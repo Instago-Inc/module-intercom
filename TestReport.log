@@ -1,0 +1,3 @@
+[INF] 2025-12-21T23:17:49Z [test.modules_cache/intercom@1.0.0/selfTest.js] - No env loaded for test-mode script
+[INF] 2025-12-21T23:17:49Z [test.modules_cache/intercom@1.0.0/selfTest.js] - skipped: missing accessToken
+[INF] 2025-12-21T23:17:49Z [test.modules_cache/intercom@1.0.0/selfTest.js] - JavaScript executed successfully.

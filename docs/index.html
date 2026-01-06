@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>intercom Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/intercom - V8 module</h1>
+      <p class="intro">Intercom communication can be a core part of how teams stay close to their users. This module provides a small, focused way to connect those workflows with Intercom so your automations can create, update, and find contacts without extra ceremony.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/intercom - V8 module</h1>
+<p>Intercom communication can be a core part of how teams stay close to their users. This module provides a small, focused way to connect those workflows with Intercom so your automations can create, update, and find contacts without extra ceremony.</p>
+<p>If you are building on the hgi-v8 runtime, this module keeps the setup simple and predictable while still letting you call any Intercom endpoint when you need to. Learn more at https://instago.ai.</p>
+<h2>Technical reference</h2>
+<p>Exports:</p>
+<ul>
+<li><code>configure({ accessToken?, baseUrl?, version? })</code></li>
+<li><code>request({ path, method?, query?, body?, token?, headers?, debug? })</code></li>
+<li><code>createContact({ email?, phone?, name?, externalId?, customAttributes?, signedUpAt?, lastSeenAt?, ownerId?, token? })</code></li>
+<li><code>updateContact({ id, email?, phone?, name?, externalId?, customAttributes?, signedUpAt?, lastSeenAt?, ownerId?, token? })</code></li>
+<li><code>searchContacts({ query, token? })</code></li>
+<li><code>selfTest()</code></li>
+</ul>
+<p>Usage:</p>
+<ul>
+<li><code>require(&#x27;intercom@latest&#x27;)</code></li>
+<li>All methods return <code>{ ok, data, error, status? }</code>.</li>
+<li><code>request</code> chooses <code>GET</code> if <code>body</code> is omitted, otherwise <code>POST</code> unless <code>method</code> is provided.</li>
+</ul>
+<p>Configuration:</p>
+<ul>
+<li><code>configure({ accessToken, baseUrl, version })</code> sets defaults for subsequent calls.</li>
+<li>Env keys (all optional): <code>intercom.accessToken</code>, <code>intercom.token</code>, <code>intercom.baseUrl</code>, <code>intercom.version</code>.</li>
+<li><code>token</code> can be passed per-call to override the configured or env token.</li>
+</ul>
+<p>Examples:</p>
+<p>Create a contact:</p>
+<pre class="code"><code>
+const intercom = require(&#x27;intercom@latest&#x27;);
+intercom.configure({ accessToken: env.get(&#x27;intercom.accessToken&#x27;) });
+
+const res = await intercom.createContact({
+  email: &#x27;customer@example.com&#x27;,
+  name: &#x27;Customer One&#x27;,
+  externalId: &#x27;user_123&#x27;,
+  customAttributes: { plan: &#x27;pro&#x27; }
+});
+</code></pre>
+<p>Update a contact:</p>
+<pre class="code"><code>
+const intercom = require(&#x27;intercom@latest&#x27;);
+const res = await intercom.updateContact({
+  id: &#x27;123&#x27;,
+  phone: &#x27;+15551234567&#x27;,
+  lastSeenAt: &#x27;2024-01-15T12:30:00Z&#x27;
+});
+</code></pre>
+<p>Search contacts:</p>
+<pre class="code"><code>
+const intercom = require(&#x27;intercom@latest&#x27;);
+const res = await intercom.searchContacts({
+  query: { field: &#x27;email&#x27;, operator: &#x27;=&#x27;, value: &#x27;customer@example.com&#x27; }
+});
+</code></pre>
+<p>Custom request:</p>
+<pre class="code"><code>
+const intercom = require(&#x27;intercom@latest&#x27;);
+const res = await intercom.request({
+  path: &#x27;/conversations&#x27;,
+  method: &#x27;POST&#x27;,
+  body: { from: { type: &#x27;user&#x27;, id: &#x27;123&#x27; }, body: &#x27;Hello there&#x27; }
+});
+</code></pre>
+      </div>
+      
+    </main>
+  </body>
+</html>

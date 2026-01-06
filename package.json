@@ -1,0 +1,22 @@
+{
+  "name": "@instago/intercom",
+  "version": "1.0.1",
+  "description": "api to interact with intercom",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "intercom",
+    "crm",
+    "support",
+    "customer",
+    "messaging",
+    "api"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}
