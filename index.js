@@ -1,4 +1,4 @@
-// intercom@1.0.0 - minimal Intercom API helper
+// intercom@latest - minimal Intercom API helper
 // API:
 // - configure({ accessToken?, baseUrl?, version? })
 // - request({ path, method?, query?, body?, token?, headers?, debug? })
@@ -7,11 +7,11 @@
 // - searchContacts({ query, token? })
 
 (function () {
-  const http = require('http@1.0.0');
-  const auth = require('auth@1.0.0');
-  const json = require('json@1.0.0');
-  const qs = require('qs@1.0.0');
-  const log = require('log@1.0.0').create('intercom');
+  const http = require('http@latest');
+  const auth = require('auth@latest');
+  const json = require('json@latest');
+  const qs = require('qs@latest');
+  const log = require('log@latest').create('intercom');
 
   const DEFAULT_BASE_URL = 'https://api.intercom.io';
   const DEFAULT_VERSION = '2.9';

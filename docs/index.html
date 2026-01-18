@@ -59,13 +59,13 @@
   <body>
     <main>
       <h1>module/intercom - V8 module</h1>
-      <p class="intro">Intercom communication can be a core part of how teams stay close to their users. This module provides a small, focused way to connect those workflows with Intercom so your automations can create, update, and find contacts without extra ceremony.</p>
+      <p class="intro">Intercom is often the center of how teams connect with customers. This module keeps that connection lightweight so workflows can create, update, and search contacts without extra setup.</p>
       <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
       <div class="section">
         <h2>Technical reference</h2>
         <h1>module/intercom - V8 module</h1>
-<p>Intercom communication can be a core part of how teams stay close to their users. This module provides a small, focused way to connect those workflows with Intercom so your automations can create, update, and find contacts without extra ceremony.</p>
-<p>If you are building on the hgi-v8 runtime, this module keeps the setup simple and predictable while still letting you call any Intercom endpoint when you need to. Learn more at https://instago.ai.</p>
+<p>Intercom is often the center of how teams connect with customers. This module keeps that connection lightweight so workflows can create, update, and search contacts without extra setup.</p>
+<p>If you are building on the hgi-v8 runtime, it offers a small, predictable surface area while still allowing direct calls to Intercom endpoints when you need them. Learn more at https://instago.ai.</p>
 <h2>Technical reference</h2>
 <p>Exports:</p>
 <ul>
@@ -80,19 +80,19 @@
 <ul>
 <li><code>require(&#x27;intercom@latest&#x27;)</code></li>
 <li>All methods return <code>{ ok, data, error, status? }</code>.</li>
-<li><code>request</code> chooses <code>GET</code> if <code>body</code> is omitted, otherwise <code>POST</code> unless <code>method</code> is provided.</li>
+<li><code>request</code> defaults to <code>GET</code> when <code>body</code> is omitted, otherwise <code>POST</code> unless <code>method</code> is provided.</li>
 </ul>
 <p>Configuration:</p>
 <ul>
 <li><code>configure({ accessToken, baseUrl, version })</code> sets defaults for subsequent calls.</li>
 <li>Env keys (all optional): <code>intercom.accessToken</code>, <code>intercom.token</code>, <code>intercom.baseUrl</code>, <code>intercom.version</code>.</li>
-<li><code>token</code> can be passed per-call to override the configured or env token.</li>
+<li><code>token</code> can be passed per-call to override configured or env tokens.</li>
 </ul>
 <p>Examples:</p>
 <p>Create a contact:</p>
 <pre class="code"><code>
 const intercom = require(&#x27;intercom@latest&#x27;);
-intercom.configure({ accessToken: env.get(&#x27;intercom.accessToken&#x27;) });
+intercom.configure({ accessToken: &#x27;YOUR_TOKEN&#x27; });
 
 const res = await intercom.createContact({
   email: &#x27;customer@example.com&#x27;,
@@ -127,7 +127,16 @@ const res = await intercom.request({
 });
 </code></pre>
       </div>
-      
+      <div class="section">
+  <h2>Changelog</h2>
+  <h2>v1.0.1 - Intercom helper ready for API flows</h2>
+<p>The Intercom API helper now ships with configurable authentication, request building, and contact operations so integrations can securely talk to Intercom with minimal setup.</p>
+<h3>Added</h3>
+<ul>
+<li>Configuration helpers plus a reusable <code>request</code> wrapper that manages tokens, headers, and JSON payloads for Intercom endpoints.</li>
+<li>High-level contact helpers (<code>createContact</code>, <code>updateContact</code>, <code>searchContacts</code>) plus <code>selfTest</code> to verify connectivity before shipping.</li>
+</ul>
+</div>
     </main>
   </body>
 </html>

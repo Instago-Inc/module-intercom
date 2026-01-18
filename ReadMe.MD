@@ -1,8 +1,8 @@
 # module/intercom - V8 module
 
-Intercom communication can be a core part of how teams stay close to their users. This module provides a small, focused way to connect those workflows with Intercom so your automations can create, update, and find contacts without extra ceremony.
+Intercom is often the center of how teams connect with customers. This module keeps that connection lightweight so workflows can create, update, and search contacts without extra setup.
 
-If you are building on the hgi-v8 runtime, this module keeps the setup simple and predictable while still letting you call any Intercom endpoint when you need to. Learn more at https://instago.ai.
+If you are building on the hgi-v8 runtime, it offers a small, predictable surface area while still allowing direct calls to Intercom endpoints when you need them. Learn more at https://instago.ai.
 
 ## Technical reference
 
@@ -17,19 +17,19 @@ Exports:
 Usage:
 - `require('intercom@latest')`
 - All methods return `{ ok, data, error, status? }`.
-- `request` chooses `GET` if `body` is omitted, otherwise `POST` unless `method` is provided.
+- `request` defaults to `GET` when `body` is omitted, otherwise `POST` unless `method` is provided.
 
 Configuration:
 - `configure({ accessToken, baseUrl, version })` sets defaults for subsequent calls.
 - Env keys (all optional): `intercom.accessToken`, `intercom.token`, `intercom.baseUrl`, `intercom.version`.
-- `token` can be passed per-call to override the configured or env token.
+- `token` can be passed per-call to override configured or env tokens.
 
 Examples:
 
 Create a contact:
 ```js
 const intercom = require('intercom@latest');
-intercom.configure({ accessToken: env.get('intercom.accessToken') });
+intercom.configure({ accessToken: 'YOUR_TOKEN' });
 
 const res = await intercom.createContact({
   email: 'customer@example.com',
